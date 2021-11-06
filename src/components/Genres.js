@@ -1,7 +1,7 @@
 import React from "react";
 import { MY_API_KEY } from "../global";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import { useParams } from "react-router";
 import styled from "styled-components";
 
@@ -59,11 +59,11 @@ const Genres = () => {
     <div  className='fixingBox'>
       {genres.map((el) => (
         <GenresSidebar className="genres-sidebar" key={el.id}>
-          <Link className="genres-link" to={`/catalog/${el.id}`}  style={{textDecoration:'none'}}>
+          <NavLink activeClassName="genres-link" to={`/catalog/${el.id}`}  style={{textDecoration:'none'}}>
             <GenresLinkInner className="genres-link-inner">
               {el.name}
             </GenresLinkInner>
-          </Link>
+          </NavLink>
         </GenresSidebar>
       ))}
     </div>

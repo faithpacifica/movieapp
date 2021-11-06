@@ -47,7 +47,7 @@ const MovieInfo = styled.div`
   display: flex;
   align-items: center;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
   color: white;
 `;
 

@@ -1,6 +1,7 @@
 body {
   background-color: #32363B;
-  /* background-image: url(/../img/bg-texture.jpg);  */
+  /* background-image: url('/../img/bg-texture.jpg'); */
+   /*TODO:*/
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -443,7 +444,7 @@ body {
   content: "";
   right: 0;
   top: 0;
-  background: rgba(2, 126, 251, 1);
+  background-color: rgba(2, 126, 251, 1);
   transition: all 0.3s ease;
 }
 
@@ -699,4 +700,14 @@ a {
 
 .fixingBox{
   position: fixed;
+}
+
+.css-b62m3t-container{
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.genres-link{
+  /* TODO: active uzgarmadi */
+  background-color: #14ec43;
 }

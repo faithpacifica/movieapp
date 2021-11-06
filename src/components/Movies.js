@@ -19,7 +19,7 @@ const MoviesImg = styled.img`
 `;
 const MovieTitle = styled.h2`
   color: #17b7da;
-  font-weight: 600;
+  font-weight: bold;
   font-size: 1em;
   margin: 0;
   width: 100%;

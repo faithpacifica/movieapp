@@ -9,11 +9,13 @@ import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 // import 'react-perfect-scrollbar/dist/css/styles.css';
 import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <div className="wrapper">
       <Router>
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route exact path="/">

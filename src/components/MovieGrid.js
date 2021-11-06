@@ -90,7 +90,8 @@ const MovieGrid = (props) => {
           return res.json();
         })
         .then((data) => {
-          setMovies(list.concat(data.results));
+          // setMovies(list.concat(data.results));
+          setMovies([...list, ...data.results ])
           setTotalPage(data.total_pages); // 500 ta page 
         })
         .catch((err) => {

@@ -10,17 +10,19 @@ const GENRES = `https://api.themoviedb.org/3/genre/movie/list${API_PARAMS}`;
 
 const InputGap = styled.div`
   margin-bottom: 25px;
-width:800px;
-margin-top:30px;
-display:flex;
-justify-content:space-around;
-color:white;
-align-items:center;
-font-size:20px;
+  width: 800px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  align-items: center;
+  font-size: 20px;
 `;
 
 const Label = styled.label`
   color: white;
+  margin-bottom: 10px;
+  display: block;
 `;
 
 const BigSearchTitle = styled.h1`
@@ -29,29 +31,28 @@ const BigSearchTitle = styled.h1`
 `;
 
 const SearchedMovies = styled.div`
-  display:flex;
-  padding:10px;
-  flex-wrap:wrap;
-  margin-top:30px;
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
   justify-content: space-around;
 `;
 
 const SearchButton = styled.button`
-color:white;
-padding:10px 18px;
-border-radius:4px;
-font-size:18px;
-background-color:#01B4E4;
-border:none;
-font-weight:bold;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: #01b4e4;
+  border: none;
+  font-weight: bold;
 `;
-
 
 const BigFilter = () => {
   const [sort, setSort] = useState("");
   const [year, setYear] = useState("");
   const [total, setTotal] = useState(0);
-  const [genre, setGenre] = useState('');
+  const [genre, setGenre] = useState("");
   const [genreList, setGenreList] = useState([]);
 
   const SORT_BY_ALL = `https://api.themoviedb.org/3/discover/movie?api_key=${MY_API_KEY}&language=en-US&sort_by=${sort}.desc&include_adult=false&page=1&year=${year}&with_genres=${genre}`;
@@ -85,7 +86,7 @@ const BigFilter = () => {
     setGenre(`${mappedGenre}`);
     // setGenre(mappedGenre.join(','));
     // console.log(setGenre(mappedGenre.join('')))
-    console.log(`${mappedGenre}`)
+    console.log(`${mappedGenre}`);
   };
 
   //  Serverdan kelgan genres ni map qilib, id si va nomini olamiz(umumiy)
@@ -142,7 +143,7 @@ const BigFilter = () => {
       .then((data) => {
         console.log(data);
         setDiscover(data.results);
-        
+
         setTotal(data.total_results);
       })
       .catch((err) => {
@@ -154,7 +155,7 @@ const BigFilter = () => {
   return (
     <div className="container">
       <div className="big-filter-wrapper">
-        <form >
+        <form>
           <BigSearchTitle>Big Search</BigSearchTitle>
 
           <Label>Till Year</Label>
@@ -165,19 +166,26 @@ const BigFilter = () => {
           <Select options={sortOptions} onChange={handleSortChange} />
           <br />
 
-        <hr/>
+          <hr />
           <InputGap>
-            <SearchButton className="search-btn" type="button" onClick={handleDiscover}> Discover </SearchButton>
-            <div>Found <span>{total }</span> Movies{" "}</div>
+            <SearchButton
+              className="search-btn"
+              type="button"
+              onClick={handleDiscover}
+            >
+              {" "}
+              Discover{" "}
+            </SearchButton>
+            <div>
+              Found <span>{total}</span> Movies{" "}
+            </div>
           </InputGap>
         </form>
 
-          <SearchedMovies className ='searched_movies'>
-          {
-          discover.map((el) => ( 
+        <SearchedMovies className="searched_movies">
+          {discover.map((el) => (
             <Movie className="movies-wrapper" movieobj={el} key={el.id} />
-          ))
-          }
+          ))}
         </SearchedMovies>
       </div>
     </div>
