@@ -8,9 +8,7 @@ const Header = () => {
     <div className="header">
       <div className="container header-container">
         <Link className="header-logo-link" to='/'>
-         <img className="header-logo" src="img/logo.svg" alt="logo" />
-         {/* TODO:Logoni rangi qorayib qoldi
-          */}
+         <img className="header-logo" src="img/main-logo.svg" alt="logo" />
         </Link>
         
         <nav >

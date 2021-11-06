@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useState } from "react/cjs/react.development"; //?????
+import { useState } from "react/cjs/react.development"; 
 import { useParams } from "react-router-dom";
 import { MY_API_KEY } from "../global";
 import styled from "styled-components";
@@ -120,14 +120,7 @@ const ViewMovie = () => {
 
   return (
     <SingleMoviePage className="singleMoviepage">
-      <BackDrop
-        className="inner-div"
-        style={{
-          backgroundImage: `url(${
-            ORIGINAL_IMAGE_URL + movieInfo.backdrop_path
-          })`,
-        }}
-      >
+      <BackDrop  className="inner-div" style={{backgroundImage: `url(${ ORIGINAL_IMAGE_URL + movieInfo.backdrop_path})`,}} >
         <div className="container">
           <MovieInfo className="movie-info">
             <SingleMovieImg src={IMAGE_URL + movieInfo.poster_path} alt="" />
@@ -135,9 +128,7 @@ const ViewMovie = () => {
 
               <div className="movie-content-inner_div">
                 <h2 className="movie-content-title"> {movieInfo.title}</h2>
-                <span className="movie-content-release_date">
-                  ({movieInfo.release_date})
-                </span>
+                <span className="movie-content-release_date">({movieInfo.release_date}) </span>
               </div>
 
               <span className="movie_genres">
@@ -148,7 +139,6 @@ const ViewMovie = () => {
                   : null}
               </span>
               
-
               <div className="actions">
                       {/* PROGRESS BAR */}
                       <div className="progress-container">
@@ -168,7 +158,6 @@ const ViewMovie = () => {
                       </div>
                       
                       <div className="icons-container">
-                  
                         <div className="icons-wrapper">
                           <i className="fas fa-list"></i>
                         </div>
@@ -197,7 +186,6 @@ const ViewMovie = () => {
                     </div>
                     <h2 className="movie-overview-title">Overview</h2>
                     <p className="movie-overview">{movieInfo.overview}</p>
-
             </div>
           </MovieInfo>
         </div>
@@ -206,12 +194,7 @@ const ViewMovie = () => {
       <div className="container">
         <div className="cards-gap">
           <h2 className="heading">Casted Actors</h2>
-          {/* TODO:scrollni stillash*/}
-
-   
-          <div className="actors-wrapper cards-wrapper">
-            {mappedActors
-            }</div>
+          <div className="actors-wrapper cards-wrapper">{mappedActors}</div>  {/* TODO:scrollni stillash*/}
         </div>
 
         <div className="cards-gap">
@@ -222,12 +205,8 @@ const ViewMovie = () => {
         </div>
         
       <button  class="custom-btn btn-2" type='button' onClick ={handleClick}>Back</button>
-      </div>
-    
-      
-    </SingleMoviePage>
-
- 
+    </div>   
+  </SingleMoviePage>
   );
 };
 

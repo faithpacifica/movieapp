@@ -213,8 +213,7 @@ body {
 }
 
 .movie_details {
-  padding: 10px 10px 0;
-  color: white;
+  text-align: center;
 }
 
 /* PROGRESS BAR */
@@ -661,6 +660,7 @@ a {
 }
 
 .btn-2 {
+  font-size: 18px;
   background: rgb(96,9,240);
   background: linear-gradient(0deg, #29BBD2 0%,#032541 100%);
   border: none;
@@ -679,4 +679,24 @@ a {
 
 .movieContainer .movie-title{
   color:white;
+}
+
+.moviesCardImgWrapper .movie-title{
+  color:white;
+}
+
+.cards-wrapper::-webkit-scrollbar {
+  width: 0px;
+}
+
+ .cards-wrapper::-webkit-scrollbar-track {
+  background-color: #01B4E4;
+}
+
+.cards-wrapper::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(208, 0, 0, 1);
+}
+
+.fixingBox{
+  position: fixed;
 }

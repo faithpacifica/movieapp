@@ -33,6 +33,7 @@ const SearchedMovies = styled.div`
   padding:10px;
   flex-wrap:wrap;
   margin-top:30px;
+  justify-content: space-around;
 `;
 
 const SearchButton = styled.button`
@@ -158,10 +159,8 @@ const BigFilter = () => {
 
           <Label>Till Year</Label>
           <Select options={YearOptions} onChange={handleYearChange} />
-
           <Label> Genre </Label>
           <Select options={newGenreArr} isMulti onChange={handleGenreChange} />
-
           <Label> Sort by </Label>
           <Select options={sortOptions} onChange={handleSortChange} />
           <br />

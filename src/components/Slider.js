@@ -104,7 +104,7 @@ const Slider = () => {
                     <div className="movie-content-inner_div">
                       <h2 className="movie-content-title"> {el.title}</h2>
                       <span className="movie-content-release_date">
-                        ({el.release_date})
+                        ({el.release_date.slice(0,4)})
                       </span>
                     </div>
 
@@ -144,7 +144,8 @@ const Slider = () => {
 
                       <a 
                         className="no_click play_trailer"
-                        href="/" target='_blank'
+                        href={`https://www.youtube.com/${el.original_title} + movie trailer` } target='_blank'
+                        // TODO:link ga olib bormayapti
                         data-site="YouTube"
                         data-id=""
                         data-title="Play trailer"

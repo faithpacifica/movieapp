@@ -9,7 +9,7 @@ import { MY_API_KEY } from "../global";
 const TOP_MOVIES_API = `https://api.themoviedb.org/3/movie/top_rated?api_key=${MY_API_KEY}`;
 
 const Row = styled.div`
-padding:25px;
+  padding:25px;
   display: flex;
   justify-content:space-between;
   flex-wrap: wrap;
@@ -66,27 +66,43 @@ const MovieGrid = (props) => {
     if (props.genre == undefined) {
       // default da TOP movie larni chiqarish
       fetch(TOP_MOVIES_API)
-        .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("Serverda ma'lumot olishda xatolik!!");
+        }
+        return res.json();
+      })
         .then((data) => {
           // 20 + 20 kino quyish
           setMovies(list.concat(data.results));
           setTotalPage(data.total_pages);
         })
+        .catch((err) => {
+          setError(err.message);
+        });
 
     } else {
         fetch(BY_GENRES + props.genre + "&page=" + page)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("Serverda ma'lumot olishda xatolik!!");
+          }
+          return res.json();
+        })
         .then((data) => {
           setMovies(list.concat(data.results));
           setTotalPage(data.total_pages); // 500 ta page 
+        })
+        .catch((err) => {
+          setError(err.message);
         });
     }
-    //   TODO:catch qushish
+   
    
   }, [props.genre, page]);
 
   return (
-    //TODO:S padding ochilmayapti
+   
     <div className="moviesGrid-wrapper">
       <CatalogTitle className="catalog-title"> Movies count: {movies.length} </CatalogTitle>
       <Row>
@@ -96,7 +112,7 @@ const MovieGrid = (props) => {
       </Row>
 
       {page < totalPage ? (
-        // TODO:stillash
+        
         <Button type="button" onClick={loadMore}>
           Load more
         </Button>

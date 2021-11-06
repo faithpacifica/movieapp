@@ -56,7 +56,7 @@ const Genres = () => {
   }, []);
 
   return (
-    <div>
+    <div  className='fixingBox'>
       {genres.map((el) => (
         <GenresSidebar className="genres-sidebar" key={el.id}>
           <Link className="genres-link" to={`/catalog/${el.id}`}  style={{textDecoration:'none'}}>
