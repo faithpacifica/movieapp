@@ -661,8 +661,8 @@ a {
 
 .btn-2 {
   font-size: 18px;
-  background: rgb(96,9,240);
-  background: linear-gradient(0deg, #29BBD2 0%,#032541 100%);
+  background: #02B3E3;
+  /* background: linear-gradient(0deg, #01B4E4 0%,#032541 100%); */
   border: none;
   
 }
