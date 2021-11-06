@@ -38,11 +38,11 @@ const SimMovieInfo = styled.div`
 
  const SimilarMovieVote = styled.p`
   position:absolute;
-  width:35px;
+  width:40px;
   padding:5px;
-  border:1px solid red;
+  border:3px solid #21D07A;
   border-radius:50%;
-  top: -15px;
+  top: -20px;
   right: 15px;
   background-color:black;
   font-weight:bold;
