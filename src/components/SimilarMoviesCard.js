@@ -32,8 +32,21 @@ line-height: 1;
 }
 `;
 const SimMovieInfo = styled.div`
-  padding:5px 5px 0;
+  padding:15px 5px 0;
+  position:relative;
 `;
+
+ const SimilarMovieVote = styled.p`
+  position:absolute;
+  width:35px;
+  padding:5px;
+  border:1px solid red;
+  border-radius:50%;
+  top: -15px;
+  right: 15px;
+  background-color:black;
+  font-weight:bold;
+ `;
 
 const SimilarMoviesCard = ({ id, title, img, releaseDate, voteAverage }) => {
   return (
@@ -47,7 +60,7 @@ const SimilarMoviesCard = ({ id, title, img, releaseDate, voteAverage }) => {
           />
         ) : (
           <Poster>
-            <NoImage src="../../img/noimage.jpg" alt="no poster" />
+            <NoImage src="../../img/noimage.jpg" alt="no poster" /> {/*TODO:image chiqmadi */}
           </Poster>
         )}
         <SimMovieInfo className="similar_movie_info">
@@ -59,7 +72,7 @@ const SimilarMoviesCard = ({ id, title, img, releaseDate, voteAverage }) => {
             <span>Release date: </span>
             {releaseDate.slice(0,4)} 
           </p>
-          <p className="similar-movies-vote">{Math.trunc(voteAverage * 10)}%</p>
+          <SimilarMovieVote className="similar-movies-vote">{Math.trunc(voteAverage * 10)}%</SimilarMovieVote>
         </SimMovieInfo>
       </SimilarMoviesWrapper>
     </Link>

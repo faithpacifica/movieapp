@@ -113,7 +113,7 @@ const ViewMovie = () => {
       key={i} /* doim key kerak */
       title={el.title}
       img={IMAGE_URL + el.poster_path}
-      releaseDate={el.release_date}
+      releaseDate={el.release_date.slice(0,4)}
       voteAverage={el.vote_average}
     />
   ));
@@ -128,7 +128,8 @@ const ViewMovie = () => {
 
               <div className="movie-content-inner_div">
                 <h2 className="movie-content-title"> {movieInfo.title}</h2>
-                <span className="movie-content-release_date">({movieInfo.release_date}) </span>
+                <span className="movie-content-release_date">({movieInfo.release_date} )</span>
+                {/* <span className="movie-content-release_date">{movieInfo.release_date.slice(0,4)} </span>TODO: */}
               </div>
 
               <span className="movie_genres">
