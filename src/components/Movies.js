@@ -88,7 +88,7 @@ const Movie = ({ movieobj }) => {
           {movieobj.title ? movieobj.title : movieobj.name}{" "}
         </MovieTitle>
         <ReleaseDate className="release-date">
-          {movieobj.release_dateslice(0,4)}
+          {movieobj.release_date.slice(0,4)}
         </ReleaseDate>
       </div>
     </Link>

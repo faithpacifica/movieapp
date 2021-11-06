@@ -10,6 +10,8 @@ const SimilarMoviesWrapper = styled.div`
 `;
 
 const SimilarMoviesImg = styled.img`
+border:1px solid white;
+min-width:134px;
   height: 200px;
   display:flex;
 `;
@@ -28,11 +30,11 @@ const NoImage = styled.img`
 `;
 
 const SimMovieTitle = styled.p`
-line-height: 1;
+line-height: 0.8;
 }
 `;
 const SimMovieInfo = styled.div`
-  padding:15px 5px 0;
+  padding:15px 0px 0;
   position:relative;
 `;
 
