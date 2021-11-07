@@ -71,7 +71,7 @@ body {
 /* HEADER */
 .header {
   z-index: 5;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -340,7 +340,7 @@ body {
 }
 
 .catalogPage {
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 /* VIEW MOVIE PAGE */
@@ -641,11 +641,10 @@ a {
 
 
 .custom-btn {
-  width: 130px;
+  width: 80px;
   height: 40px;
   color: #fff;
   border-radius: 5px;
-    font-family: 'Lato', sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -660,13 +659,22 @@ a {
   outline: none;
 }
 
-.btn-2 {
-  font-size: 18px;
-  background: #02B3E3;
-  /* background: linear-gradient(0deg, #01B4E4 0%,#032541 100%); */
-  border: none;
-  
+body{
+  position: relative;
 }
+.btn-2 {
+  text-align: center;
+  width: 80px;
+  position: fixed;
+  bottom:20px;
+  left:20px;
+  font-size: 18px;
+  background-color: #151814;
+  color:#21D07A;
+  border: none;
+  z-index: 300;
+}
+
 .btn-2:before {
   height: 0%;
   width: 2px;
@@ -699,7 +707,7 @@ a {
 }
 
 .fixingBox{
-  position: fixed;
+  /* position: fixed; */
 }
 
 .css-b62m3t-container{
@@ -710,4 +718,19 @@ a {
 .genres-link{
   /* TODO: active uzgarmadi */
   background-color: #14ec43;
+}
+
+.movie_genres{
+  margin-bottom: 30px;
+  display: block;
+}
+
+.movie_genres span{
+  padding: 5px 10px;
+  background-color:black;
+  border-radius:3px;
+  margin-left:5px;
+  margin-right: 10px;
+  font-weight: bold;
+  color:#21D07A;
 }

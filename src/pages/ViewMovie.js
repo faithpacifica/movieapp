@@ -205,8 +205,8 @@ const ViewMovie = () => {
           </Link>
         </div>
         
-      <button  class="custom-btn btn-2" type='button' onClick ={handleClick}>Back</button>
     </div>   
+      <button  class="custom-btn btn-2" type='button' onClick ={handleClick}>Back</button>
   </SingleMoviePage>
   );
 };
