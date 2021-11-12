@@ -123,13 +123,14 @@ const ViewMovie = () => {
       <BackDrop  className="inner-div" style={{backgroundImage: `url(${ ORIGINAL_IMAGE_URL + movieInfo.backdrop_path})`,}} >
         <div className="container">
           <MovieInfo className="movie-info">
-            <SingleMovieImg src={IMAGE_URL + movieInfo.poster_path} alt="" />
+            <SingleMovieImg src={IMAGE_URL + movieInfo.poster_path} alt="movie photo" />
             <div className="movie-content">
 
               <div className="movie-content-inner_div">
                 <h2 className="movie-content-title"> {movieInfo.title}</h2>
-                <span className="movie-content-release_date">({movieInfo.release_date} )</span>
-                {/* <span className="movie-content-release_date">{movieInfo.release_date.slice(0,4)} </span>TODO: */}
+                <span className="movie-content-release_date"> 
+                {/* ({movieInfo.release_date.slice(0,4)})   TODO: year ni uzini chiqazolmadim  */}
+                </span>
               </div>
 
               <span className="movie_genres">
@@ -195,7 +196,7 @@ const ViewMovie = () => {
       <div className="container">
         <div className="cards-gap">
           <h2 className="heading">Casted Actors</h2>
-          <div className="actors-wrapper cards-wrapper">{mappedActors}</div>  {/* TODO:scrollni stillash*/}
+          <div className="actors-wrapper cards-wrapper">{mappedActors}</div> 
         </div>
 
         <div className="cards-gap">
@@ -206,7 +207,7 @@ const ViewMovie = () => {
         </div>
         
     </div>   
-      <button  class="custom-btn btn-2" type='button' onClick ={handleClick}>Back</button>
+      <button  className="custom-btn btn-2" type='button' onClick ={handleClick}>Back</button>
   </SingleMoviePage>
   );
 };

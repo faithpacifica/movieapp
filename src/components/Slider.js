@@ -66,7 +66,7 @@ const Slider = () => {
       })
       .then((data) => {
         console.log(data);
-        setPopularMovies(data.results.slice(0, 4));
+        setPopularMovies(data.results.slice(0,4));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -82,7 +82,7 @@ const Slider = () => {
         grabCursor={true}
         spaceBetween={10}
         slidesPerView={1}
-    loop
+        loop
         autoplay={{ delay: 4000, disableOnInteraction: false
         }}
       >
@@ -98,7 +98,8 @@ const Slider = () => {
             >
               <div className="container">
                 <MovieInfo className="movie-info">
-                  <SingleMovieImg src={IMAGE_URL + el.poster_path} alt="" />
+                  <SingleMovieImg src={IMAGE_URL + el.poster_path} alt="movie image"   style={{
+             width: '300',  height: '400', border:'1px solid #2A3034'}}/>
                   <div className="movie-content">
 
                     <div className="movie-content-inner_div">
@@ -116,8 +117,7 @@ const Slider = () => {
                             className="title timer"
                             data-from="0"
                             data-to={el.vote_average}
-                            data-speed="1500"
-                          >
+                            data-speed="1500">
                             {el.vote_average * 10}%
                           </span>
                           <div className="overlay"></div>
@@ -142,14 +142,10 @@ const Slider = () => {
                         </div>
                       </div>
 
-                      <a 
-                        className="no_click play_trailer"
-                        href={`https://www.youtube.com/${el.original_title} + movie trailer` } target='_blank'
+                      <a   className="no_click play_trailer"
+                        href={`https://www.youtube.com/${el.original_title} ` } target='_blank'
                         // TODO:link ga olib bormayapti
-                        data-site="YouTube"
-                        data-id=""
-                        data-title="Play trailer"
-                      >
+                        data-site="YouTube"   data-id="" data-title="Play trailer">
                         <i className="fas fa-play"></i>
                         Play trailer
                       </a>

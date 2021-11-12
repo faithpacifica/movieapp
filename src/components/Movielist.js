@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Movie from "../components/Movies";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper"; //auto swiper chiqarish uchun
-
+import Loader from "./Loader";
 import { MY_API_KEY } from "../global";
 import { Link } from "react-router-dom";
 
@@ -20,15 +20,6 @@ const Movielist = ({ type, title }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
-  const Loader = () => {
-    return (
-      <div className="loader" id="loader-2">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    );
-  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -42,7 +33,6 @@ const Movielist = ({ type, title }) => {
         .then((data) => {
           setMoviesList(data.results);
           setIsLoading(false);
-          // console.log(data.results);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -53,13 +43,17 @@ const Movielist = ({ type, title }) => {
 
   return (
     <div className="movieContainer">
+
       <div className="heading-line">
         <h2 className="heading">{title}</h2>
         <Link className="custom-btn btn-3" to="/catalog"><span>All Movies</span></Link>
-       
       </div>
 
-      <Swiper
+     
+        {error ? <h3>{error}</h3> : ""}
+        {isLoading ? <Loader /> : ""}
+
+        {!isLoading && !error ?   <Swiper
         modules={[Autoplay]} grabCursor={true} spaceBetween={10}slidesPerView={6}loop
         autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
          >
@@ -68,11 +62,8 @@ const Movielist = ({ type, title }) => {
             <Movie className="movies-wrapper" movieobj={el} />
           </SwiperSlide>
         ))}
-      </Swiper>
-      {/* <div>
-        {error ? <h3>{error}</h3> : ""}
-        {isLoading ? <Loader /> : ""}
-      </div> */}
+      </Swiper> : '' }
+   
     </div>
   );
 };

@@ -23,6 +23,7 @@ const Poster = styled.div`
   background-color: linear-gradient(to center, #c5c5c5, #e8e8e8);
 `;
 const NoImage = styled.img`
+  display:block;
   border: 1px solid black;
   width: 140px;
   height: 200px;
@@ -30,9 +31,10 @@ const NoImage = styled.img`
 `;
 
 const SimMovieTitle = styled.p`
-line-height: 0.8;
-}
+  line-height: 0.8;
+
 `;
+
 const SimMovieInfo = styled.div`
   padding:15px 0px 0;
   position:relative;
@@ -50,19 +52,18 @@ const SimMovieInfo = styled.div`
   font-weight:bold;
  `;
 
+
+
 const SimilarMoviesCard = ({ id, title, img, releaseDate, voteAverage }) => {
   return (
     <Link className="similar-movies-wrapper" to={`/movie/${id}`}>
       <SimilarMoviesWrapper className="similar-movies-wrapper">
         {img ? (
-          <SimilarMoviesImg
-            className="similar_movie-img"
-            src={img}
-            alt="movie image"
-          />
+          <SimilarMoviesImg  className="similar_movie-img" src={img}  alt="movie image" />
         ) : (
           <Poster>
-            <NoImage src="../../img/noimage.jpg" alt="no poster" /> {/*TODO:image chiqmadi */}
+            <NoImage src="../../img/noimage.jpg" alt="no poster" /> 
+            {/* TODO:img chiqmayapti  path tugri lekin */}
           </Poster>
         )}
         <SimMovieInfo className="similar_movie_info">
@@ -70,7 +71,6 @@ const SimilarMoviesCard = ({ id, title, img, releaseDate, voteAverage }) => {
             {title}
           </SimMovieTitle>
           <p className="similar-movies-release">
-            {" "}
             <span>Release date: </span>
             {releaseDate.slice(0,4)} 
           </p>

@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import Loader from "../components/Loader";
+import { MY_API_KEY } from "../global";
+import Movie from "./Movies";
+
+import { useState } from "react";
 
 const IntroSection = styled.section`
   padding:150px 40px 40px;
@@ -61,7 +66,47 @@ const IntroWelcome = styled.div`
   margin-bottom: 30px;
 `;
 
+const IntroBigSearch = styled.div`
+display:flex;
+padding:50px 0;
+overflow-y: hidden;
+overflow-x: scroll;
+`;
+
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${MY_API_KEY}&language=en-US&include_adult=false`;
+
 const Intro = () => {
+  const [moviesList, setMoviesList] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+
+  const handleSearch = (e) => {
+    if (e.target.value.length > 2) {
+      fetch(SEARCH_API + `&query=${e.target.value}`)
+        .then((res) => {
+        if (!res.ok) {
+           throw Error("Serverda ma'lumot olishda xatolik!!");
+        }
+        return res.json()
+      })
+        .then((data) => {
+          console.log(data.results);
+          setMoviesList(data.results);
+          // setIsLoading(false);
+        })
+        .catch((err) => {
+          // setIsLoading(false);
+          setError(err.message);
+        });
+    }
+  };
+
+  
+  const mappedMoviesList = moviesList.map((el) => {
+    return <Movie className ='movies-wrapper' movieobj={el} key={el.id} />;
+  });
+
+
   return (
     <IntroSection className="intro">
       <IntroContainer className="intro-container container">
@@ -74,17 +119,21 @@ const Intro = () => {
           
                 
          <form className="search">
-        <IntroSearchInput
-          type="text"
-          placeholder="Найти фильм, сериал, персону......"
-          // onChange={props.handleSearch}
+        <IntroSearchInput type="text" placeholder="Найти фильм, сериал, персону......"
+          onChange={handleSearch}
         />
-        <SubmitInput type="submit" value="Search">
-          Submit
-        </SubmitInput>
+        <SubmitInput type="submit" value="Search"> Submit </SubmitInput>
         </form> 
         
+        <IntroBigSearch className="IntroBigSearch">
+        {/* {error ? <h3>{error}</h3> : ""}
+         {isLoading ? <Loader /> : ""} 
+        {!isLoading && !error ? mappedMoviesList : ""} */}
+        {mappedMoviesList}
+      </IntroBigSearch>
+
       </IntroContainer>
+
     </IntroSection>
   );
 };

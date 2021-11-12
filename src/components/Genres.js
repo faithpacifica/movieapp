@@ -60,7 +60,6 @@ const Genres = () => {
       {genres.map((el) => (
         <GenresSidebar className="genres-sidebar" key={el.id}>
           <NavLink activeClassName="genres-link" to={`/catalog/${el.id}`}  style={{textDecoration:'none'}}>
-            {/* TODO: ishlamadi */}
             <GenresLinkInner className="genres-link-inner">
               {el.name}
             </GenresLinkInner>

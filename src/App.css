@@ -1,8 +1,6 @@
 body {
   background-color: #32363B;
   /* background-image: url('/../img/bg-texture.jpg'); */
-   /*TODO:*/
-
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -695,7 +693,7 @@ body{
 }
 
 .cards-wrapper::-webkit-scrollbar {
-  width: 0px;
+  height: 7px;
 }
 
  .cards-wrapper::-webkit-scrollbar-track {
@@ -715,9 +713,9 @@ body{
   width: 50%;
 }
 
-.genres-link{
-  /* TODO: active uzgarmadi */
+.genres-link .genres-link-inner {
   background-color: #14ec43;
+  color:black;
 }
 
 .movie_genres{
