@@ -111,8 +111,8 @@ const Intro = () => {
     <IntroSection className="intro">
       <IntroContainer className="intro-container container">
         <IntroWelcome>
-          <IntroTitle>Добро пожаловать.</IntroTitle>
-          <IntroText>
+          <IntroTitle className="intro-title">Добро пожаловать.</IntroTitle>
+          <IntroText className="intro-text">
             Миллионы фильмов, сериалов и людей. Исследуйте сейчас.{" "}
           </IntroText>
         </IntroWelcome>

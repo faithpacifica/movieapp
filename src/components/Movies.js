@@ -6,7 +6,7 @@ const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
 const MoviesCard = styled.div`
   box-shadow: 0px 2px 6px 1px #0fb8bc;
-  min-width: 170px;
+  min-width: 100%;
   flex-wrap: wrap;
   margin-bottom:10px;
 `;

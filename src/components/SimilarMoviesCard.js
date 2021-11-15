@@ -14,6 +14,7 @@ border:1px solid white;
 min-width:134px;
   height: 200px;
   display:flex;
+  box-shadow: 1px 0px 5px 1px #032541;
 `;
 
 const Poster = styled.div`
@@ -32,12 +33,13 @@ const NoImage = styled.img`
 
 const SimMovieTitle = styled.p`
   line-height: 0.8;
-
+  color:#b4a2a2;
 `;
 
 const SimMovieInfo = styled.div`
   padding:15px 0px 0;
   position:relative;
+  box-shadow: 1px 0px 5px 1px #032541;
 `;
 
  const SimilarMovieVote = styled.p`

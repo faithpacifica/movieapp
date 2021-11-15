@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const POPULAR_MOVIES_API = `https://api.themoviedb.org/3/movie/popular?api_key=${MY_API_KEY}`;
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+// const TRAILER_URL =`https://api.themoviedb.org/3/movie/574060/videos?api_key=${MY_API_KEY}`;
 
 const SingleMovieImg = styled.img`
   width: 300px;
@@ -23,7 +24,7 @@ const BackDrop = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: 470px;
-  z-index:1 ;
+  z-index: 1;
 `;
 
 const SliderWrapper = styled.div`
@@ -39,22 +40,13 @@ const MovieInfo = styled.div`
   color: white;
 `;
 
-
 const Slider = () => {
   const [popularMovies, setPopularMovies] = useState([]);
+  // const [trailer, setTrailer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-  SwiperCore.use([Autoplay]);
 
-  const Loader = () => {
-    return (
-      <div className="loader" id="loader-2">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    );
-  };
+  SwiperCore.use([Autoplay]);
 
   useEffect(() => {
     fetch(POPULAR_MOVIES_API)
@@ -65,8 +57,8 @@ const Slider = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
-        setPopularMovies(data.results.slice(0,4));
+        // console.log(data);
+        setPopularMovies(data.results.slice(0, 4));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -74,6 +66,25 @@ const Slider = () => {
         setError(err.message);
       });
   }, []);
+
+  // useEffect(() => {
+  //   fetch(TRAILER_URL)
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         throw Error("Serverda ma'lumot olishda xatolik!!");
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data.results);
+  //       // setTrailer(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       setIsLoading(false);
+  //       setError(err.message);
+  //     });
+  // }, []);
 
   return (
     <SliderWrapper className="slider-wrapper">
@@ -83,8 +94,7 @@ const Slider = () => {
         spaceBetween={10}
         slidesPerView={1}
         loop
-        autoplay={{ delay: 4000, disableOnInteraction: false
-        }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
       >
         {popularMovies.map((el) => (
           <SwiperSlide key={el.id}>
@@ -98,15 +108,23 @@ const Slider = () => {
             >
               <div className="container">
                 <MovieInfo className="movie-info">
-                  <SingleMovieImg src={IMAGE_URL + el.poster_path} alt="movie image"   style={{
-             width: '300',  height: '400', border:'1px solid #2A3034'}}/>
+                  <SingleMovieImg
+                    className="single-movie-img"
+                    src={IMAGE_URL + el.poster_path}
+                    alt="movie image"
+                    style={{
+                      border: "1px solid #2A3034",
+                    }}
+                  />
                   <div className="movie-content">
-
                     <div className="movie-content-inner_div">
-                      <h2 className="movie-content-title"> {el.title}</h2>
-                      <span className="movie-content-release_date">
-                        ({el.release_date.slice(0,4)})
-                      </span>
+                      <h2 className="movie-content-title">
+                        {" "}
+                        {el.title}
+                        <span className="movie-content-release_date">
+                          ({el.release_date.slice(0, 4)})
+                        </span>
+                      </h2>
                     </div>
 
                     <div className="actions">
@@ -117,7 +135,8 @@ const Slider = () => {
                             className="title timer"
                             data-from="0"
                             data-to={el.vote_average}
-                            data-speed="1500">
+                            data-speed="1500"
+                          >
                             {el.vote_average * 10}%
                           </span>
                           <div className="overlay"></div>
@@ -127,7 +146,6 @@ const Slider = () => {
                       </div>
 
                       <div className="icons-container">
-                      
                         <div className="icons-wrapper">
                           <i className="fas fa-list"></i>
                         </div>
@@ -142,14 +160,17 @@ const Slider = () => {
                         </div>
                       </div>
 
-                      <a   className="no_click play_trailer"
-                        href={`https://www.youtube.com/${el.original_title} ` } target='_blank'
-                        // TODO:link ga olib bormayapti
-                        data-site="YouTube"   data-id="" data-title="Play trailer">
+                      <a
+                        className="no_click play_trailer"
+                        href="#"
+                        target="_blank"
+                        data-site="YouTube"
+                        data-id=""
+                        data-title="Play trailer"
+                      >
                         <i className="fas fa-play"></i>
                         Play trailer
                       </a>
-
                     </div>
                     <h2 className="movie-overview-title">Overview</h2>
                     <p className="movie-overview">{el.overview}</p>

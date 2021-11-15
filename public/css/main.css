@@ -11,7 +11,7 @@
 
 body{
     background-color:#252525;
-    background-image: url(../img/bg-texture.jpg);
+    background-image: url(../img/bg-texture.jpg) !important;
     background-repeat: no-repeat;
     background-size: cover;
   }

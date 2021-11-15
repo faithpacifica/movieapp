@@ -123,7 +123,7 @@ const ViewMovie = () => {
       <BackDrop  className="inner-div" style={{backgroundImage: `url(${ ORIGINAL_IMAGE_URL + movieInfo.backdrop_path})`,}} >
         <div className="container">
           <MovieInfo className="movie-info">
-            <SingleMovieImg src={IMAGE_URL + movieInfo.poster_path} alt="movie photo" />
+            <SingleMovieImg  className="single-movie-img" src={IMAGE_URL + movieInfo.poster_path} alt="movie photo" />
             <div className="movie-content">
 
               <div className="movie-content-inner_div">

@@ -18,7 +18,7 @@ object-position:center;
 
 `;
 const PosterImg = styled.div`
-box-shadow: 0 2px 8px rgb(0 0 0 /100%);
+box-shadow: 1px 0px 5px 1px #032541;
 `;
 
 const NoImage = styled.img`
@@ -29,7 +29,7 @@ object-fit: cover;
 `;
 
 const Card = styled.div`
-box-shadow: 0 2px 8px rgb(0 0 0 /100%);
+box-shadow: 1px 0px 5px 1px #032541;
 margin-right:10px;
 margin-bottom:20px;
 `;

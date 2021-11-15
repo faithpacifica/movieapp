@@ -106,7 +106,7 @@ const MovieGrid = (props) => {
    
     <div className="moviesGrid-wrapper">
       <CatalogTitle className="catalog-title"> Movies count: {movies.length} </CatalogTitle>
-      <Row>
+      <Row className="moviesGrid-row">
         {movies.map((el, i) => (
           <Movie movieobj={el} key={i} />
         ))}
