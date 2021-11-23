@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-import { MY_API_KEY } from "../global";
+// import { MY_API_KEY } from "../global";
 import Movie from "./Movies";
+import apiCalls from "../config/Api";
 
-const API_PARAMS = `?api_key=${MY_API_KEY}&language=en-US`;
-const GENRES = `https://api.themoviedb.org/3/genre/movie/list${API_PARAMS}`;
+// const API_PARAMS = `?api_key=${MY_API_KEY}&language=en-US`;
+// const GENRES = `https://api.themoviedb.org/3/genre/movie/list${API_PARAMS}`;
 
 const InputGap = styled.div`
   margin-bottom: 25px;
@@ -52,30 +53,45 @@ const BigFilter = () => {
   const [sort, setSort] = useState("");
   const [year, setYear] = useState("");
   const [total, setTotal] = useState(0);
+  // const [isLoading, setIsLoading] = useState(true);
   const [genre, setGenre] = useState("");
   const [genreList, setGenreList] = useState([]);
-
-  const SORT_BY_ALL = `https://api.themoviedb.org/3/discover/movie?api_key=${MY_API_KEY}&language=en-US&sort_by=${sort}.desc&include_adult=false&page=1&year=${year}&with_genres=${genre}`;
-
   const [error, setError] = useState();
+
+  // const SORT_BY_ALL = `https://api.themoviedb.org/3/discover/movie?api_key=
+  // ${MY_API_KEY}&language=en-US&sort_by=${sort}.desc&include_adult=false&page=1&year=${year}&with_genres=${genre}`;
+
 
   // GENRE larni SERVERDAN OLIB KELISH
 
   useEffect(() => {
-    fetch(GENRES)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Serverda ma'lumot olishda xatolik!!");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
+    // fetch(GENRES)
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       throw Error("Serverda ma'lumot olishda xatolik!!");
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     setGenreList(data.genres);
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message);
+    //   });
+
+  const getGenres = async () => {
+    try {
+        const data = await apiCalls.genre();
         setGenreList(data.genres);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+        // setIsLoading(false)
+    } catch (error) {
+        setError(error.message);
+    }
+}
+
+getGenres();
+
   }, []);
 
   const handleGenreChange = (newValue) => {
@@ -133,26 +149,50 @@ const BigFilter = () => {
   const [discover, setDiscover] = useState([]);
 
   const handleDiscover = () => {
-    fetch(SORT_BY_ALL)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Serverda ma'lumot olishda xatolik!!");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setDiscover(data.results);
 
-        setTotal(data.total_results);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    const discover = async () => {
+      try {
+          const data = await apiCalls.discover({
+            language: "en-US",
+            include_adult: false,
+            with_genres: genre,
+            sort_by: sort,
+            page: 1,
+            year: year
+          });
+          setDiscover(data.results);
+          // setIsLoading(false);
+          setTotal(data.total_results);
+      } catch (error) {
+          setError(error.message);
+      }
+
+    }
+    discover();
+    // fetch(SORT_BY_ALL)
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       throw Error("Serverda ma'lumot olishda xatolik!!");
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     setDiscover(data.results);
+
+    //     setTotal(data.total_results);
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message);
+    //   });
   };
 
-  //  const discoveredMovies = discover.map
+
   return (
+    <>
+    {error ? (
+      <p className="error-message">{error}</p>
+    ) :
     <div className="container">
       <div className="big-filter-wrapper">
         <form>
@@ -189,6 +229,8 @@ const BigFilter = () => {
         </SearchedMovies>
       </div>
     </div>
+}
+    </>   
   );
 };
 

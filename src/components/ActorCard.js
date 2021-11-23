@@ -36,7 +36,7 @@ margin-bottom:20px;
 
 const ActorCard = ({name,charName,imgLink}) => {
   return (
-    <a className= 'actor-card-link' href= {`https://en.wikipedia.org/wiki/${name}`} target='_blank'>
+    <a className= 'actor-card-link' href= {`https://en.wikipedia.org/wiki/${name}`} htmlTarget='_blank'  >
     
      <Card>
         <PosterImg className= 'poster'>

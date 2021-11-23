@@ -10,10 +10,16 @@
 }
 
 body{
-    background-color:#252525;
+    /* background-color:#a88e8e; */
     background-image: url(../img/bg-texture.jpg) !important;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
- 
+  .wrapper{ /*TODO:bg orqasi oqligicha qovotti*/
+  /* background-color:#252525; */
+  /* background-image: url(../img/bg-texture.jpg); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  }
+  

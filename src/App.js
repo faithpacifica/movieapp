@@ -17,6 +17,7 @@ const App = () => {
       <Router>
         <ScrollToTop />
         <Header />
+
         <Switch>
           <Route exact path="/">
             <Home />{" "} 
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="*">
             <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </div>

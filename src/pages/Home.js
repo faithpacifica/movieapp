@@ -1,7 +1,7 @@
-import Intro from "../components/Intro";
+// import Intro from "../components/Intro";
 import Movielist from "../components/Movielist";
 import Slider from "../components/Slider";
-
+import IntroSearch from "../components/IntroSearch/IntroSearch";
 
 
 
@@ -69,8 +69,9 @@ const Home = () => {
 
   return (
     <div className="wrapper">
-      <Intro  />
-
+      {/* <Intro  /> */}
+      <IntroSearch />
+      
       {/* {isLoading && !error ? <Loader /> :} */}
 
         <div className = 'movieList_wrapper'>

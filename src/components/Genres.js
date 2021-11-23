@@ -1,15 +1,16 @@
 import React from "react";
-import { MY_API_KEY } from "../global";
+// import { MY_API_KEY } from "../global";
 import { useEffect, useState } from "react";
 import {NavLink } from "react-router-dom";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import styled from "styled-components";
+import apiCalls from '../config/Api';
 
-const API_PARAMS = `?api_key=${MY_API_KEY}&language=en-US`;
-const GENRES = `https://api.themoviedb.org/3/genre/movie/list${API_PARAMS}`;
+// const API_PARAMS = `?api_key=${MY_API_KEY}&language=en-US`;
+// const GENRES = `https://api.themoviedb.org/3/genre/movie/list${API_PARAMS}`;
 
 const GenresSidebar = styled.div`
-  width: 180px;
+  // width: 180px;
   margin-bottom: 5px;
   margin-right:20px;
 `;
@@ -35,27 +36,48 @@ color:white;
 const Genres = () => {
   const [error, setError] = useState();
   const [genres, setGenres] = useState([]);
+  
+  // const [isLoading, setIsLoading] = useState(true);
 
-  const { id } = useParams({});
+
+  // const { id } = useParams({});
 
   useEffect(() => {
-    fetch(GENRES)
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Serverda ma'lumot olishda xatolik!!");
+    // fetch(GENRES)
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       throw Error("Serverda ma'lumot olishda xatolik!!");
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     (data.genres);
+    //   })setGenres
+    //   .catch((err) => {
+    //     setError(err.message);
+    //   });
+
+      
+      const getGenreMovies = async () => {
+        try {
+            const data = await apiCalls.genre();
+            setGenres(data.genres);
+            // setIsLoading(false)
+        } catch (error) {
+            setError(error.message);
+            // setIsLoading(false);
         }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setGenres(data.genres);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    }
+    
+    getGenreMovies();
   }, []);
 
   return (
+    <>
+    {error ? (
+      <p className="error-message">{error}</p>
+    ) :
     <div  className='fixingBox'>
       {genres.map((el) => (
         <GenresSidebar className="genres-sidebar" key={el.id}>
@@ -67,6 +89,8 @@ const Genres = () => {
         </GenresSidebar>
       ))}
     </div>
+  }
+   </>
   );
 };
 
