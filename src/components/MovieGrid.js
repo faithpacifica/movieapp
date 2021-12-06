@@ -148,7 +148,7 @@ const MovieGrid = (props) => {
       getGenreMovies()
     }
 
-  }, [props.genre, page]);
+  }, [props.genre, page,movies,prevGenre,prevPage]);
 
   return (
    

@@ -34,6 +34,7 @@ const ShowTrailer = (props) => {
             className="no_click play_trailer"
             href={`https://www.youtube.com/watch?v=${trailer.key}`}
             target="_blank"
+            rel= "noreferrer"
             data-site="YouTube"
             data-id=""
             data-title="Play trailer"
