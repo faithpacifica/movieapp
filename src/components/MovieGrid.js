@@ -148,11 +148,10 @@ const MovieGrid = (props) => {
       getGenreMovies()
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.genre, page, movies, prevGenre, prevPage ]);
 
-  }, [props.genre, page]);
 
 
-  
   return (
    
     <div className="moviesGrid-wrapper">
