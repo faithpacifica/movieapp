@@ -151,6 +151,8 @@ const MovieGrid = (props) => {
 
   }, [props.genre, page]);
 
+
+  
   return (
    
     <div className="moviesGrid-wrapper">
