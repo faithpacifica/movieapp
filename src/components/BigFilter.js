@@ -213,11 +213,11 @@ getGenres();
               type="button"
               onClick={handleDiscover}
             >
-              {" "}
-              Discover{" "}
+            
+              Discover
             </SearchButton>
             <div>
-              Found <span>{total}</span> Movies{" "}
+              Found <span>{total}</span> Movies
             </div>
           </InputGap>
         </form>
