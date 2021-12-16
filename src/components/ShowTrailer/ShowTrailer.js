@@ -14,8 +14,13 @@ const ShowTrailer = (props) => {
       try {
         const data = await apiCalls.getVideos(props.id);
         console.log(data);
-        setTrailer(data.results[0]);
+        if (data.results.length >= 1) {
+          setTrailer(data.results[0]);
+        } else {
+          setError('trailer is not found');
+        }
         setIsLoading(false);
+
       } catch (error) {
         setError(error.message);
       }
